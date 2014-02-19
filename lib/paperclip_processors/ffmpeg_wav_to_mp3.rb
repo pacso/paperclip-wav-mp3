@@ -8,27 +8,24 @@ module Paperclip
     def initialize(file, options = {}, attachment = nil)
       super
       @file = file
-      @params = options[:params]
+      @params = options[:params] || '-y -i'
       @current_format = File.extname(@file.path)
       @basename = File.basename(@file.path, @current_format)
-      @format = options[:format]
+      @format = options[:format] || 'mp3'
     end
 
     def make
-      src = @file
-      dst = Tempfile.new([@basename, @format ? ".#{@format}" : '' ])
+      source = @file
+      output = Tempfile.new([@basename, @format ? ".#{@format}" : '' ])
 
       begin
-        parameters = []
-        parameters << @params
-        parameters << ":source"
-        parameters << ":dest"
-        parameters = parameters.flatten.compact.join(' ').strip.squeeze(' ')
-        success = Paperclip.run('ffmpeg', parameters, :source => File.expand_path(src.path), :dest => File.expand_path(dst.path))
-      rescue PaperclipCommandLineError => e
+        parameters = [@params, ':source', ':dest'].flatten.compact.join(' ').strip.squeeze(' ')
+        Paperclip.run('ffmpeg', parameters, :source => File.expand_path(source.path), :dest => File.expand_path(output.path))
+      rescue PaperclipCommandLineError
         raise PaperclipError, "There was an error converting #{@basename} to mp3"
       end
-      dst
+
+      output
     end
   end
 end

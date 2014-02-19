@@ -45,13 +45,8 @@ Once you've installed the gem, update the model which uses Paperclip to attach a
 ```
 class Voicemail < ActiveRecord::Base
   has_attached_file :audio,
-                    styles: {
-                        mp3: {
-                            params: '-y -i',
-                            format: 'mp3'
-                        }
-                    },
-                    processors: [:ffmpeg]
+                    styles: { mp3: {} },
+                    processors: [:ffmpeg_wav_to_mp3]
 end
 ```
 
