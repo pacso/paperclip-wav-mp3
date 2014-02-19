@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
   s.requirements << "FFmpeg"
   s.required_ruby_version = ">= 1.9.2"
 
-  s.add_dependency("paperclip")
+  s.add_dependency("paperclip", "~> 2.7.0")
 end
