@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name          = 'paperclip-wav-mp3'
-  s.version       = '0.0.2'
+  s.version       = '0.0.3'
   s.author        = 'Jon Pascoe'
   s.email         = 'jon.pascoe@me.com'
   s.homepage      = 'https://github.com/pacso/paperclip-wav-mp3'
@@ -18,5 +18,5 @@ Gem::Specification.new do |s|
   s.requirements << "FFmpeg"
   s.required_ruby_version = ">= 1.9.2"
 
-  s.add_dependency("paperclip", "~> 2.7.0")
+  s.add_dependency("paperclip", "~> 2.7")
 end
