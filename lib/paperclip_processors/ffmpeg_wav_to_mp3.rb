@@ -2,7 +2,6 @@ require 'paperclip'
 
 module Paperclip
   class FfmpegWavToMp3 < Processor
-
     attr_accessor :file, :params, :format
 
     def initialize(file, options = {}, attachment = nil)
