@@ -37,7 +37,7 @@ This processor is distributed as a gem, which is how it should be used in your a
 Include the gem in your Gemfile:
 
 ```
-gem 'paperclip-wav-mp3', '~> 0.0'
+gem 'paperclip-wav-mp3', '~> 0.1'
 ```
 
 Once you've installed the gem, update the model which uses Paperclip to attach audio to add the processor:
